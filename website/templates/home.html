@@ -1,7 +1,58 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<br />
+{% if code %}
+<pre>
+    <code class="line-numbers language-{{lang}}">
+    {{code}}
 
-<h1>Hello</h1>
+    </code>
+    </pre>
+    <br /><br>
+    <form method="POST" action="{% url 'home' %}">
+        {% csrf_token %}
+    <div class="mb-3">
+        <textarea class="form-control" name="code" placeholder="Have A.I. fix my code" rows="3">{{code}}</textarea>
+      </div>
+      <select class="form-select" name="lang">
+        <option selected>Select programming language</option>
+        {% for lang in lang_list %}
+        <option value="{{ lang }}">{{ lang|title }}</option>
+        {% endfor %}
+      </select>
+      
+      <br />
+    
+      <button type="submit" class="btn btn-secondary">Submit</button>
+    </form>
+    <br />
+{% else %}
 
+<pre>
+<code class="line-numbers language-python">
+if name == "a":
+    print("hello")
+else:
+    print("hi")
+</code>
+</pre>
+<br /><br>
+<form method="POST" action="{% url 'home' %}">
+    {% csrf_token %}
+<div class="mb-3">
+    <textarea class="form-control" name="code" placeholder="Have A.I. fix my code" rows="3"></textarea>
+  </div>
+  <select class="form-select" name="lang">
+    <option selected>Select programming language</option>
+    {% for lang in lang_list %}
+    <option value="{{ lang }}">{{ lang|title }}</option>
+    {% endfor %}
+  </select>
+  <br />
+
+  <button type="submit" class="btn btn-secondary">Submit</button>
+</form>
+<br />
+{% endif %}
 {% endblock %}
