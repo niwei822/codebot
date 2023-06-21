@@ -10,10 +10,10 @@
     </code>
     </pre>
     <br /><br>
-    <form method="POST" action="{% url 'home' %}">
+    <form method="POST" action="{% url 'suggest' %}">
         {% csrf_token %}
     <div class="mb-3">
-        <textarea class="form-control" name="code" placeholder="Have A.I. fix my code" rows="3">{{code}}</textarea>
+        <textarea class="form-control" name="code" placeholder="Have A.I. suggest code" rows="3">{{code}}</textarea>
       </div>
       <select class="form-select" name="lang">
         <option selected>Select programming language</option>
@@ -38,10 +38,10 @@ else:
 </code>
 </pre>
 <br /><br>
-<form method="POST" action="{% url 'home' %}">
+<form method="POST" action="{% url 'suggest' %}">
     {% csrf_token %}
 <div class="mb-3">
-    <textarea class="form-control" name="code" placeholder="Have A.I. fix my code" rows="3"></textarea>
+    <textarea class="form-control" name="code" placeholder="Have A.I. suggest my code" rows="3"></textarea>
   </div>
   <select class="form-select" name="lang">
     <option selected>Select programming language</option>
